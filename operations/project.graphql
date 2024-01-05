@@ -1,0 +1,72 @@
+mutation upsertModel(
+    $description: String
+    $entityName: String
+    $id: String
+    $name: String
+    $framework: String
+    $access: String
+    $views: JSONString
+) {
+    upsertModel(
+        input: {
+            description: $description
+            entityName: $entityName
+            id: $id
+            name: $name
+            framework: $framework
+            access: $access
+            views: $views
+        }
+    ) {
+        project {
+            id
+            name
+            entityName
+            description
+            access
+            views
+        }
+        model {
+            id
+            name
+            entityName
+            description
+            access
+            views
+        }
+        inserted
+    }
+}
+
+
+query FetchAProject{
+    project(name: "model-metamers", entityName: "lukasbm") {
+        id
+        createdAt
+        public
+    }
+}
+
+query Projects($entity: String) {
+    models(entityName: $entity) {
+        edges {
+            node {
+                ...ProjectFragment
+            }
+            cursor
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}
+
+
+fragment ProjectFragment on Project {
+    id
+    name
+    entityName
+    createdAt
+    isBenchmark
+}

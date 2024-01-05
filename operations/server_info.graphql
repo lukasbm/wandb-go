@@ -6,6 +6,5 @@ query ServerInfo{
             latestVersionString
             versionOnThisInstanceString
         }
-        availableBucketProviders
     }
 }

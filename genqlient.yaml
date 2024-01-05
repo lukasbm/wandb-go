@@ -2,11 +2,13 @@
 # https://github.com/Khan/genqlient/blob/main/docs/genqlient.yaml
 schema: schema.graphql
 operations:
-- genqlient.graphql
+  - operations/*.graphql
 generated: generated.go
 package: main
 bindings:
   DateTime:
     type: time.Time
   JSON:
+    type: string
+  JSONString:
     type: string

@@ -1,0 +1,26 @@
+query Viewer{
+    viewer {
+        id
+        flags
+        entity
+        username
+        email
+        admin
+        apiKeys {
+            edges {
+                node {
+                    id
+                    name
+                    description
+                }
+            }
+        }
+        teams {
+            edges {
+                node {
+                    name
+                }
+            }
+        }
+    }
+}
