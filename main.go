@@ -29,6 +29,7 @@ func main() {
 		},
 	)
 
-	resp, err := Viewer(ctx, client)
-	fmt.Println(resp.GetViewer(), err)
+	// actually make a request
+	resp, err := Viewer(ctx, client)   // fetches viewer information
+	fmt.Println(resp.GetViewer(), err) // and shows it
 }
