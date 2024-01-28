@@ -1,0 +1,98 @@
+mutation UpsertRun($project: String, $entity: String, $name: String!) {
+    upsertBucket(input: {modelName: $project, entityName: $entity, name: $name}) {
+        bucket {
+            project {
+                name
+                entity { name }
+            }
+            id
+            name
+        }
+        inserted
+    }
+}
+
+#mutation UpsertRun($id: String!, $description: String, $display_name: String, $notes: String, $tags: [String!], $config: JSONString!, $groupName: String) {
+#    upsertBucket(input: {id: $id, description: $description, displayName: $display_name, notes: $notes, tags: $tags, config: $config, groupName: $groupName}) {
+#        bucket {
+#            ...RunFragment
+#        }
+#    }
+#}
+
+
+#mutation DeleteRun($id: ID!,) {
+#    deleteRun(input: {id: $id,}) {
+#        clientMutationId
+#    }
+#}
+
+mutation DeleteRun($id: ID!,$deleteArtifacts: Boolean) {
+    deleteRun(input: {id: $id, deleteArtifacts: $deleteArtifacts}) {
+        clientMutationId
+    }
+}
+
+
+
+query Run($project: String!, $entity: String!, $name: String!) {
+    project(name: $project, entityName: $entity) {
+        run(name: $name) {
+            ...RunFragment
+        }
+    }
+}
+
+query RunState($project: String!, $entity: String!, $name: String!) {
+    project(name: $project, entityName: $entity) {
+        run(name: $name) {
+            state
+        }
+    }
+}
+
+
+query Runs($project: String!, $entity: String!, $cursor: String, $perPage: Int = 50, $order: String, $filters: JSONString) {
+    project(name: $project, entityName: $entity) {
+        runCount(filters: $filters)
+        readOnly
+        runs(filters: $filters, after: $cursor, first: $perPage, order: $order) {
+            edges {
+                node {
+                    ...RunFragment
+                }
+                cursor
+            }
+            pageInfo {
+                endCursor
+                hasNextPage
+            }
+        }
+    }
+}
+
+fragment RunFragment on Run {
+    id
+    tags
+    name
+    displayName
+    sweepName
+    state
+    config
+    group
+    jobType
+    commit
+    readOnly
+    createdAt
+    heartbeatAt
+    description
+    notes
+    systemMetrics
+    summaryMetrics
+    historyLineCount
+    user {
+        name
+        username
+    }
+    historyKeys
+}

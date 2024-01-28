@@ -41,6 +41,21 @@ query ProjectArtifacts(
     }
 }
 
+query ProjectArtifactType(
+    $entityName: String!,
+    $projectName: String!,
+    $artifactTypeName: String!
+) {
+    project(name: $projectName, entityName: $entityName) {
+        artifactType(name: $artifactTypeName) {
+            id
+            name
+            description
+            createdAt
+        }
+    }
+}
+
 
 fragment ArtifactTypesFragment on ArtifactTypeConnection {
     edges {
