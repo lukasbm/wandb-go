@@ -8,7 +8,11 @@ package: api
 bindings:
   DateTime:
     type: time.Time
-  JSON:
-    type: string
+  Duration:
+    type: int64
+  Int64:
+    type: int64
   JSONString:
     type: string
+  JSON:
+    type: interface{}
