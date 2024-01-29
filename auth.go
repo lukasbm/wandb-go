@@ -1,4 +1,4 @@
-package main
+package wandb
 
 // NOTE: this is all copied from: "cmd/go/internal/auth"
 
