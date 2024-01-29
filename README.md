@@ -32,3 +32,30 @@ This is an unofficial wrapper around the Weights & Biases GraphQL API.
 It is not affiliated with Weights & Biases in any way.
 
 It is still work in progress and some queries might not work as expected.
+
+## Roadmap
+
+Most important features:
+
+- init
+- finish
+- config
+- log
+
+Complete feature list:
+- [ ] System metrics tracking
+- [ ] Code Saving
+- [ ] Storing system info in metadata
+- [ ] resuming/reinitializing runs
+- [ ] Main functions:
+    - [ ] init
+    - [ ] log
+    - [ ] log_artifact
+    - [ ] log_code
+    - [ ] config
+    - [ ] metadata:
+        - [ ] summary
+        - [ ] notes
+        - [ ] tags
+        - [ ] name
+    - [ ] finish run (automatically?)
