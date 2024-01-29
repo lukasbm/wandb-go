@@ -43,6 +43,7 @@ Most important features:
 - log
 
 Complete feature list:
+
 - [ ] System metrics tracking
 - [ ] Code Saving
 - [ ] Storing system info in metadata
@@ -59,3 +60,7 @@ Complete feature list:
         - [ ] tags
         - [ ] name
     - [ ] finish run (automatically?)
+- [ ] offline mode
+- [ ] connect to self-hosted servers
+
+First try to mimic [javascript client](https://github.com/wandb/wandb-js). simpler and easier.
